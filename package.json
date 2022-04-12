@@ -1,0 +1,36 @@
+{
+  "name": "@felix-binder/dolibarr-sdk",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint --fix ./src/**/*.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Felix-Binder/DolibarrSDK.git"
+  },
+  "keywords": [
+    "Dolibarr",
+    "SDK"
+  ],
+  "author": "Felix Binder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Felix-Binder/DolibarrSDK/issues"
+  },
+  "homepage": "https://github.com/Felix-Binder/DolibarrSDK#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
+    "axios": "^0.26.1",
+    "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  }
+}
