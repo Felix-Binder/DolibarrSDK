@@ -3,10 +3,10 @@ import { Dolibarr } from '../src/index';
 
 const main = async () => {
     const dolibarr = new Dolibarr({
-        server: process.env.DOLIBARR_SERVER,
-        token: process.env.DOLIBARR_TOKEN
+        server: process.env.DOLIBARR_SERVER||"",
+        token: process.env.DOLIBARR_TOKEN||""
     })
-    await dolibarr.tickets.listMany().then(response => {
+    await dolibarr.users.info().then(response => {
         console.log("Response: ", response.data);
     }).catch(error => {
         console.error("Error: ", error);
