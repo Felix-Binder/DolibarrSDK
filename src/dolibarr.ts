@@ -1,14 +1,18 @@
 import type { DolibarrConfig } from './types';
 import { Transporter } from './transporter';
 import { 
+    Agendaevents,
     Status,
     Tasks,
     Tickets,
     Users,
-    Groups
+    Groups,
+    Supplierorders
 } from './operators';
-import { ITickets } from './tickets';
+import { IAgendaevents } from './agendaevents';
+import { ISupplierorders } from './supplierorders';
 import { ITasks } from './tasks';
+import { ITickets } from './tickets';
 import { IStatus } from './status';
 import { IUsers } from './users';
 import { IGroups } from './groups';
@@ -18,7 +22,7 @@ export class Dolibarr {
     private _transporter: Transporter;
 
     // Operator
-    private _agendaevents: any;
+    private _agendaevents: IAgendaevents;
     private _bankaccounts: any;
     private _contacts: any;
     private _contracts: any;
@@ -30,7 +34,7 @@ export class Dolibarr {
     private _setup: any;
     private _status: IStatus;
     private _supplierinvoices: any;
-    private _supplierorders: any;
+    private _supplierorders: ISupplierorders;
     private _tasks: ITasks;
     private _thirdparties: any;
     private _tickets: ITickets;
@@ -49,6 +53,8 @@ export class Dolibarr {
             });
         }
 
+        this._agendaevents = new Agendaevents(this._transporter);
+        this._supplierorders = new Supplierorders(this._transporter);
         this._tasks = new Tasks(this._transporter);
         this._thirdparties = {};
         this._tickets = new Tickets(this._transporter);
@@ -59,13 +65,27 @@ export class Dolibarr {
 	get url() {
 		return `${this.config.server}${this.config.uri||"/api/index.php/"}`;
 	}
-    
-    get tickets(): ITickets {
-        return this._tickets;
+
+    // Operators
+
+    get agendaevents(): IAgendaevents {
+        return this._agendaevents;
+    }
+
+    get supplierorders(): ISupplierorders {
+        return this._supplierorders;
     }
 
     get tasks(): ITasks {
         return this._tasks;
+    }
+    
+    get thirdparties(): any {
+        return this._thirdparties;
+    }
+    
+    get tickets(): ITickets {
+        return this._tickets;
     }
 
     get status(): IStatus {
