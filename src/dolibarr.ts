@@ -2,20 +2,39 @@ import type { DolibarrConfig } from './types';
 import { Transporter } from './transporter';
 import { 
     Agendaevents,
+    Bankaccounts,
+    Contacts,
+    Contracts,
+    Documents,
+    Groups,
+    Invoices,
+    Login,
+    Projects,
     Status,
+    Supplierinvoices,
+    Supplierorders,
     Tasks,
     Tickets,
     Users,
-    Groups,
-    Supplierorders
 } from './operators';
 import { IAgendaevents } from './agendaevents';
+import { IBankaccounts } from './bankaccounts';
+import { IContacts } from './contacts';
+import { IContracts } from './contracts';
+import { IDocuments } from './documents';
+import { IGroups } from './groups';
+import { IInvoices } from './invoices';
+import { ILogin } from './login';
+import { IProjects } from './projects';
+import { IProposals } from './proposals';
+import { ISetup } from './setup';
+import { IStatus } from './status';
+import { ISupplierinvoices } from './supplierinvoices';
 import { ISupplierorders } from './supplierorders';
 import { ITasks } from './tasks';
+import { IThirdparties } from './thirdparties';
 import { ITickets } from './tickets';
-import { IStatus } from './status';
 import { IUsers } from './users';
-import { IGroups } from './groups';
 
 export class Dolibarr {
     public config: DolibarrConfig;
@@ -23,23 +42,23 @@ export class Dolibarr {
 
     // Operator
     private _agendaevents: IAgendaevents;
-    private _bankaccounts: any;
-    private _contacts: any;
-    private _contracts: any;
-    private _documents: any;
-    private _invoices: any;
-    private _login: any;
-    private _projects: any;
-    private _proposals: any;
-    private _setup: any;
+    private _bankaccounts: IBankaccounts;
+    private _contacts: IContacts;
+    private _contracts: IContracts;
+    private _documents: IDocuments;
+    private _groups: IGroups;
+    private _invoices: IInvoices;
+    private _login: ILogin;
+    private _projects: IProjects;
+    private _proposals: IProposals;
+    private _setup: ISetup;
     private _status: IStatus;
-    private _supplierinvoices: any;
+    private _supplierinvoices: ISupplierinvoices;
     private _supplierorders: ISupplierorders;
     private _tasks: ITasks;
-    private _thirdparties: any;
+    private _thirdparties: IThirdparties;
     private _tickets: ITickets;
     private _users: IUsers;
-    private _groups: IGroups;
 
     constructor(config:DolibarrConfig) {
         this.config = config;
@@ -54,14 +73,25 @@ export class Dolibarr {
         }
 
         this._agendaevents = new Agendaevents(this._transporter);
+        this._bankaccounts = new Bankaccounts(this._transporter);
+        this._contacts = new Contacts(this._transporter);
+        this._contracts = new Contracts(this._transporter);
+        this._documents = new Documents(this._transporter);
+        this._groups = new Groups(this._transporter);
+        this._invoices = new Invoices(this._transporter);
+        this._login = new Login(this._transporter);
+        this._projects = new Projects(this._transporter);
+        this._proposals = new Groups(this._transporter);
+        this._setup = new Groups(this._transporter);
+        this._status = new Status(this._transporter);
+        this._supplierinvoices = new Supplierinvoices(this._transporter);
         this._supplierorders = new Supplierorders(this._transporter);
         this._tasks = new Tasks(this._transporter);
-        this._thirdparties = {};
+        this._thirdparties = new Groups(this._transporter);
         this._tickets = new Tickets(this._transporter);
-        this._status = new Status(this._transporter);
         this._users = new Users(this._transporter);
-        this._groups = new Groups(this._transporter);
     }
+
 	get url() {
 		return `${this.config.server}${this.config.uri||"/api/index.php/"}`;
 	}
@@ -72,6 +102,50 @@ export class Dolibarr {
         return this._agendaevents;
     }
 
+    get bankaccounts(): IBankaccounts {
+        return this._bankaccounts;
+    }
+
+    get contacts(): IContacts{
+        return this._contacts;
+    }
+
+    get contracts(): IContracts {
+        return this._contracts;
+    }
+
+    get documents(): IDocuments {
+        return this._documents;
+    }
+
+    get groups(): IGroups {
+        return this._groups;
+    }
+
+    get invoices(): IInvoices {
+        return this._invoices;
+    }
+
+    get login(): ILogin {
+        return this._login;
+    }
+    
+    get projects(): IProjects {
+        return this._projects;
+    }
+    
+    get proposals(): IProposals {
+        return this._proposals;
+    }
+    
+    get setup(): ISetup {
+        return this._setup;
+    }
+
+    get supplierinvoices(): ISupplierinvoices {
+        return this._supplierinvoices;
+    }
+
     get supplierorders(): ISupplierorders {
         return this._supplierorders;
     }
@@ -80,7 +154,7 @@ export class Dolibarr {
         return this._tasks;
     }
     
-    get thirdparties(): any {
+    get thirdparties(): IThirdparties {
         return this._thirdparties;
     }
     
@@ -94,9 +168,5 @@ export class Dolibarr {
 
     get users(): IUsers {
         return this._users;
-    }
-
-    get groups(): IGroups {
-        return this._groups;
     }
 }
