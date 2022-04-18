@@ -1,6 +1,6 @@
 import { Transporter } from '../transporter';
 import { DolibarrRequestOptions } from '../types';
-import { ITasks } from '../tasks';
+import { ITasks, TasksPayload } from '../tasks';
 
 export class Tasks implements ITasks {
     public _transporter: Transporter;
@@ -11,7 +11,7 @@ export class Tasks implements ITasks {
 
     async listMany(options?: DolibarrRequestOptions) {
         return await this._transporter.get("tasks", "/", {
-            params: options||undefined
+            params: options
         });
     }
 
@@ -31,12 +31,7 @@ export class Tasks implements ITasks {
 
     }
 
-    async addTimeSpent(id:number, payload: {
-        date:any,
-        duration:number,
-        user_id:number,
-        note:string
-    }) {
+    async addTimeSpent(id:number, payload: TasksPayload["addTimeSpent"]) {
 
     }
 

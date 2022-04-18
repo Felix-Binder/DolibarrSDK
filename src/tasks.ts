@@ -10,6 +10,6 @@ export type TasksPayload = {
 }
 
 export interface ITasks extends IOperator<any, any> {
-    addTimeSpent(id: number, payload: any):Promise<any>
+    addTimeSpent(id: number, payload: TasksPayload["addTimeSpent"]):Promise<any>
     roles(id: number):Promise<any>
 }
