@@ -1,5 +1,5 @@
 export type LoginOptions = {
-    username: string,
+    login : string,
     password: string,
     entity?: string, // Entity (when multicompany module is used). '' means 1=first company. ,
     reset?: number //Reset token (0=get current token, 1=ask a new token and canceled old token. This means access using current existing API token of user will fails: new token will be required for new access)
