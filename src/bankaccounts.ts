@@ -1,6 +1,6 @@
 import { IOperator, TypeMap } from './types';
 
-export type BankaccountsPayload = {
+export type Payload = {
     create: TypeMap,
     update: TypeMap,
     addLines: {
@@ -32,9 +32,38 @@ export type BankaccountsPayload = {
     }
 }
 
-export interface IBankaccounts extends IOperator<BankaccountsPayload["create"], BankaccountsPayload["update"]> {
-    getlines(account: number):Promise<any>;
-    addLines(account: number, payload: BankaccountsPayload["addLines"]):Promise<any>;
-    linkLines(account: number, line: number, payload: BankaccountsPayload["linkLines"]):Promise<any>;
-    transfer(payload: BankaccountsPayload["transfer"]):Promise<any>;
+export type Query = {
+    getLines: {
+        sqlfilters: string
+    }
+}
+
+export interface IBankaccounts extends IOperator<Payload["create"], Payload["update"]> {
+    /**
+     * Get the list of lines of the account
+     * @param {number} id ID of account
+     * @param query Request query parameter
+    **/
+    getlines(id: number, query?: Query["getLines"]):Promise<any>;
+
+    /**
+     * Add a line to an account
+     * @param {number} id ID of account
+     * @param payload Request body payload
+    **/
+    addLines(id: number, payload: Payload["addLines"]):Promise<any>;
+
+    /**
+     * Add a link to an account line
+     * @param {number} id ID of account
+     * @param {number} line ID of account line
+     * @param payload Request body payload
+    **/
+    linkLines(id: number, line: number, payload: Payload["linkLines"]):Promise<any>;
+    
+    /**
+     * Create an internal wire transfer between two bank accounts
+     * @param payload Request body payload
+    **/ 
+    transfer(payload: Payload["transfer"]):Promise<any>;
 }
