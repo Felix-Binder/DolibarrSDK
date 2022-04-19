@@ -1,6 +1,6 @@
 import { Transporter } from '../transporter';
 import { DolibarrRequestOptions } from '../types';
-import { ITasks, TasksPayload } from '../tasks';
+import { ITasks, Payload, Query } from '../tasks';
 import { Operator } from '../operator';
 
 export class Tasks extends Operator implements ITasks {
@@ -8,9 +8,9 @@ export class Tasks extends Operator implements ITasks {
         super(transporter, "tasks")
     }
 
-    async listMany(options?: DolibarrRequestOptions) {
+    async listMany(query?: DolibarrRequestOptions) {
         return await this._transporter.get(this._operator, "/", {
-            params: options
+            params: query
         });
     }
 
@@ -18,11 +18,11 @@ export class Tasks extends Operator implements ITasks {
         return await this._transporter.get(this._operator, `/${id}`);
     }
     
-    async create(payload: TasksPayload["create"]) {
+    async create(payload: Payload["create"]) {
         return await this._transporter.post(this._operator, "/", payload);
     }
 
-    async update(id: number, payload: TasksPayload["update"]) {
+    async update(id: number, payload: Payload["update"]) {
         return await this._transporter.put(this._operator, `/${id}`, payload);
     }
     
@@ -30,11 +30,13 @@ export class Tasks extends Operator implements ITasks {
         return await this._transporter.delete(this._operator, `/${id}`);
     }
 
-    async addTimeSpent(id:number, payload: TasksPayload["addTimeSpent"]) {
+    async addTimeSpent(id:number, payload: Payload["addTimeSpent"]) {
         return await this._transporter.post(this._operator, `/${id}/addtimespent`, payload);
     }
 
-    async roles(id:number) {
-        return await this._transporter.get(this._operator, `/${id}/roles`);
+    async roles(id:number, query?: Query["roles"]) {
+        return await this._transporter.get(this._operator, `/${id}/roles`, {
+            params: query
+        });
     }
 }
