@@ -1,7 +1,7 @@
-import { Transporter } from '../transporter';
-import { DolibarrRequestOptions } from '../types';
-import { IInvoices, Payload } from '../invoices';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { DolibarrRequestOptions } from '../../types';
+import { IInvoices, Payload } from '../../invoices';
+import { Operator } from '../../operator';
 
 export class Invoices extends Operator implements IInvoices {
     constructor(transporter: Transporter) {

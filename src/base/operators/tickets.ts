@@ -1,11 +1,11 @@
-import { Transporter } from '../transporter';
-import { DolibarrRequestOptions } from '../types';
-import { IThirdparties, Payload } from '../thirdparties';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { DolibarrRequestOptions } from '../../types';
+import { ITickets, Payload } from '../../tickets';
+import { Operator } from '../../operator';
 
-export class Thirdparties extends Operator implements IThirdparties {
+export class Tickets extends Operator implements ITickets {
     constructor(transporter: Transporter) {
-        super(transporter, "thirdparties")
+        super(transporter, "tickets")
     }
 
     async listMany(query?: DolibarrRequestOptions) {
@@ -31,4 +31,16 @@ export class Thirdparties extends Operator implements IThirdparties {
     }
 
     // Additionals
+
+    async newMessage(payload: Payload["newMessage"]) {
+        return await this._transporter.post(this._operator, "/newmessage", payload);
+    }
+
+    async ref(ref: string) {
+        return await this._transporter.get(this._operator, `/ref/${ref}`);
+    }
+
+    async trackId(track_id: string) {
+        return await this._transporter.get(this._operator, `/track_id/${track_id}`);
+    }
 }

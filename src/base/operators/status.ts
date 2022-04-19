@@ -1,6 +1,6 @@
-import { Transporter } from '../transporter';
-import { IStatus } from '../status';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { IStatus } from '../../status';
+import { Operator } from '../../operator';
 
 export class Status extends Operator implements IStatus {
     constructor(transporter: Transporter) {

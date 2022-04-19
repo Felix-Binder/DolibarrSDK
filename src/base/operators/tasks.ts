@@ -1,7 +1,7 @@
-import { Transporter } from '../transporter';
-import { DolibarrRequestOptions } from '../types';
-import { ITasks, Payload, Query } from '../tasks';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { DolibarrRequestOptions } from '../../types';
+import { ITasks, Payload, Query } from '../../tasks';
+import { Operator } from '../../operator';
 
 export class Tasks extends Operator implements ITasks {
     constructor(transporter: Transporter) {

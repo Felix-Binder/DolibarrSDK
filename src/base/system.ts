@@ -4,7 +4,7 @@ import {
     Login,
     Setup,
     Status,
-} from '../operators';
+} from './operators';
 // import { IDictionary } from '../dictionary';
 import { ILogin } from '../login';
 import { ISetup } from '../setup';

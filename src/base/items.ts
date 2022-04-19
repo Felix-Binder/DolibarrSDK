@@ -15,7 +15,7 @@ import {
     Thirdparties,
     Tickets,
     Users,
-} from '../operators';
+} from './operators';
 import { IAgendaevents } from '../agendaevents';
 import { IBankaccounts } from '../bankaccounts';
 import { IContacts } from '../contacts';

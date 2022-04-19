@@ -1,7 +1,7 @@
-import { Transporter } from '../transporter';
-import { DolibarrRequestOptions } from '../types';
-import { IUsers, Payload } from '../users';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { DolibarrRequestOptions } from '../../types';
+import { IUsers, Payload } from '../../users';
+import { Operator } from '../../operator';
 
 export class Users extends Operator implements IUsers {
     constructor(transporter: Transporter) {

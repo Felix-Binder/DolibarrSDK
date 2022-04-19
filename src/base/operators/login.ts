@@ -1,6 +1,6 @@
-import { Transporter } from '../transporter';
-import { ILogin, LoginOptions } from '../login';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { ILogin, LoginOptions } from '../../login';
+import { Operator } from '../../operator';
 
 export class Login extends Operator implements ILogin {
     constructor(transporter: Transporter) {

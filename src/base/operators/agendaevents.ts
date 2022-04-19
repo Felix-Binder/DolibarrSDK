@@ -1,7 +1,7 @@
-import { Transporter } from '../transporter';
-import { DolibarrRequestOptions } from '../types';
-import { IAgendaevents, AgendaeventsPayload } from '../agendaevents';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { DolibarrRequestOptions } from '../../types';
+import { IAgendaevents, AgendaeventsPayload } from '../../agendaevents';
+import { Operator } from '../../operator';
 
 export class Agendaevents extends Operator implements IAgendaevents {
     constructor(transporter: Transporter) {

@@ -1,7 +1,7 @@
-import { Transporter } from '../transporter';
-import { DolibarrRequestOptions } from '../types';
-import { IBankaccounts, Payload, Query } from '../bankaccounts';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { DolibarrRequestOptions } from '../../types';
+import { IBankaccounts, Payload, Query } from '../../bankaccounts';
+import { Operator } from '../../operator';
 
 export class Bankaccounts extends Operator implements IBankaccounts {
     constructor(transporter: Transporter) {

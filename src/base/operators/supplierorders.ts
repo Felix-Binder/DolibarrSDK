@@ -1,7 +1,7 @@
-import { Transporter } from '../transporter';
-import { DolibarrRequestOptions } from '../types';
-import { ISupplierorders, Payload } from '../supplierorders';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { DolibarrRequestOptions } from '../../types';
+import { ISupplierorders, Payload } from '../../supplierorders';
+import { Operator } from '../../operator';
 
 export class Supplierorders extends Operator implements ISupplierorders {
     constructor(transporter: Transporter) {

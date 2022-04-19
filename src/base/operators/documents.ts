@@ -1,6 +1,6 @@
-import { Transporter } from '../transporter';
-import { IDocuments, Payload, Query } from '../documents';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { IDocuments, Payload, Query } from '../../documents';
+import { Operator } from '../../operator';
 
 export class Documents extends Operator implements IDocuments {
     constructor(transporter: Transporter) {

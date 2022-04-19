@@ -1,7 +1,7 @@
-import { Transporter } from '../transporter';
-import { DolibarrRequestOptions } from '../types';
-import { IProposals, Payload, Query } from '../proposals';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { DolibarrRequestOptions } from '../../types';
+import { IProposals, Payload, Query } from '../../proposals';
+import { Operator } from '../../operator';
 
 export class Proposals extends Operator implements IProposals {
     constructor(transporter: Transporter) {

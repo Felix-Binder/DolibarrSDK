@@ -1,7 +1,7 @@
-import { Transporter } from '../transporter';
-import { DolibarrRequestOptions } from '../types';
-import { IContacts, Payload, Query } from '../contacts';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { DolibarrRequestOptions } from '../../types';
+import { IContacts, Payload, Query } from '../../contacts';
+import { Operator } from '../../operator';
 
 export class Contacts extends Operator implements IContacts {
     constructor(transporter: Transporter) {

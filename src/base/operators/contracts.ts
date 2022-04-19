@@ -1,7 +1,7 @@
-import { Transporter } from '../transporter';
-import { DolibarrRequestOptions } from '../types';
-import { IContracts, Payload } from '../contracts';
-import { Operator } from '../operator';
+import { Transporter } from '../../transporter';
+import { DolibarrRequestOptions } from '../../types';
+import { IContracts, Payload } from '../../contracts';
+import { Operator } from '../../operator';
 
 export class Contracts extends Operator implements IContracts {
     constructor(transporter: Transporter) {

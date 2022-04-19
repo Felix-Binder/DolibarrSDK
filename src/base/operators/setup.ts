@@ -1,7 +1,7 @@
-import { Transporter } from '../transporter';
-import { ISetup, Query } from '../setup';
-import { Operator } from '../operator';
-import { DolibarrRequestOptions } from '../types';
+import { Transporter } from '../../transporter';
+import { ISetup, Query } from '../../setup';
+import { Operator } from '../../operator';
+import { DolibarrRequestOptions } from '../../types';
 
 export class Setup extends Operator implements ISetup {
     constructor(transporter: Transporter) {
