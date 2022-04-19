@@ -22,6 +22,9 @@
     "url": "https://github.com/Felix-Binder/DolibarrSDK/issues"
   },
   "homepage": "https://github.com/Felix-Binder/DolibarrSDK#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/Felix-Binder"
+  },
   "devDependencies": {
     "@types/chai": "^4.3.1",
     "@types/mocha": "^9.1.0",

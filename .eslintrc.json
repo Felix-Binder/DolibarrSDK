@@ -1,19 +1,30 @@
 {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
     "env": {
-        "browser": true,
-        "es2021": true
+        "es6": true,
+        "node": true,
+        "mocha": true
     },
     "extends": [
-        "airbnb-base"
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
     ],
-    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": "latest",
+        "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "plugins": [
-        "@typescript-eslint"
-    ],
     "rules": {
+        "no-console": "off",
+        "linebreak-style": "off",
+        "quotes": [
+            "error",
+            "double",
+            { "allowTemplateLiterals": true }
+        ],
+        "keyword-spacing": ["error", { "before": true }],
+        "space-before-blocks": ["error"]
     }
 }
