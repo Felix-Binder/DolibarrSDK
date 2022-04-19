@@ -1,6 +1,8 @@
-import { IOperator } from './types';
+import { IOperator, TypeMap } from './types';
 
 export type TasksPayload = {
+    create: TypeMap,
+    update: TypeMap,
     addTimeSpent: {
         date: any,
         duration: number,
@@ -9,7 +11,7 @@ export type TasksPayload = {
     }
 }
 
-export interface ITasks extends IOperator<any, any> {
+export interface ITasks extends IOperator<TasksPayload["create"], TasksPayload["update"]> {
     addTimeSpent(id: number, payload: TasksPayload["addTimeSpent"]):Promise<any>
     roles(id: number):Promise<any>
 }
