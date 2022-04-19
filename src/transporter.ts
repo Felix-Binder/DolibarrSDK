@@ -82,19 +82,19 @@ export class Transporter {
 		return await this.request('options', `${operator}${path}`, undefined, options);
 	}
 
-	async delete<T = any, D = any>(operator: DolibarrOperator, path="/", data?: D,options?: AxiosRequestConfig): Promise<TransporterResponse<T>|undefined> {
+	async delete<T = any, D = any>(operator: DolibarrOperator, path="/", data?: D, options?: AxiosRequestConfig): Promise<TransporterResponse<T>|undefined> {
 		return await this.request('delete', `${operator}${path}`, data, options);
 	}
 
-	async put<T = any, D = any>(operator: DolibarrOperator, path="/", data?: D,options?: AxiosRequestConfig): Promise<TransporterResponse<T>|undefined> {
+	async put<T = any, D = any>(operator: DolibarrOperator, path="/", data?: D, options?: AxiosRequestConfig): Promise<TransporterResponse<T>|undefined> {
 		return await this.request('put', `${operator}${path}`, data, options);
 	}
 
-	async post<T = any, D = any>(operator: DolibarrOperator, path="/", data?: D,options?: AxiosRequestConfig): Promise<TransporterResponse<T>|undefined> {
+	async post<T = any, D = any>(operator: DolibarrOperator, path="/", data?: D, options?: AxiosRequestConfig): Promise<TransporterResponse<T>|undefined> {
 		return await this.request('post', `${operator}${path}`, data, options);
 	}
 
-	async patch<T = any, D = any>(operator: DolibarrOperator, path="/", data?: D,options?: AxiosRequestConfig): Promise<TransporterResponse<T>|undefined> {
+	async patch<T = any, D = any>(operator: DolibarrOperator, path="/", data?: D, options?: AxiosRequestConfig): Promise<TransporterResponse<T>|undefined> {
 		return await this.request('patch', `${operator}${path}`, data, options);
 	}
 }
