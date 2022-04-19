@@ -21,7 +21,7 @@ export type DolibarrRequestOptions = {
 }
 
 export interface IOperator<C, U> {
-    listMany(options?:DolibarrRequestOptions):Promise<any>;
+    listMany(options?: DolibarrRequestOptions):Promise<any>;
     listOne(id: number):Promise<any>;
     create(payload: C):Promise<any>;
     update(id: number, payload: U):Promise<any>;
@@ -29,5 +29,5 @@ export interface IOperator<C, U> {
 }
 
 export type TypeMap = {
-    [key:string]: string|number;
+    [key:string]: string | number;
 }
