@@ -1,5 +1,5 @@
 import { Transporter } from '../transporter';
-import { ILogin, LoginPayload } from '../login';
+import { ILogin, LoginOptions } from '../login';
 import { Operator } from '../operator';
 
 export class Login extends Operator implements ILogin {
@@ -7,19 +7,13 @@ export class Login extends Operator implements ILogin {
         super(transporter, "login")
     }
 
-    /**
-     * Login with GET Method (not recommanded)
-    **/
-    async get(payload: LoginPayload) {
+    async get(query: LoginOptions) {
         return await this._transporter.get(this._operator, "/", {
-            params: payload
+            params: query
         });
     }
 
-    /**
-     * Login with POST Method (recommanded)
-    **/
-    async post(payload: LoginPayload) {
+    async post(payload: LoginOptions) {
         return await this._transporter.post(this._operator, "/", payload);
     }
 }
