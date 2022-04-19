@@ -1,6 +1,6 @@
 import { IOperator } from './types';
 
-export type TicketPayload = {
+export type Payload = {
     create: {
         subject?: string,
         message?: string,
@@ -19,6 +19,22 @@ export type TicketPayload = {
     }
 }
 
-export interface ITickets extends IOperator<TicketPayload["create"], TicketPayload["create"]> {
-    newMessage(payload: TicketPayload["newMessage"]):Promise<any>
+export interface ITickets extends IOperator<Payload["create"], Payload["create"]> {
+    /**
+     * Create a ticket object 
+     * @param payload Request body payload
+    **/
+    newMessage(payload: Payload["newMessage"]):Promise<any>
+
+    /**
+     * Get properties of a Ticket object from ref 
+     * @param {string} ref Reference for ticket
+    **/
+    ref(ref: string):Promise<any>
+
+    /**
+     * Get properties of a Ticket object from track id 
+     * @param {string} track_id Tracking ID of ticket
+    **/
+    trackId(track_id: string):Promise<any>
 }

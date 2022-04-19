@@ -1,6 +1,6 @@
 import { Transporter } from '../transporter';
 import { DolibarrRequestOptions } from '../types';
-import { ITickets, TicketPayload } from '../tickets';
+import { ITickets, Payload } from '../tickets';
 import { Operator } from '../operator';
 
 export class Tickets extends Operator implements ITickets {
@@ -8,9 +8,9 @@ export class Tickets extends Operator implements ITickets {
         super(transporter, "tickets")
     }
 
-    async listMany(options?: DolibarrRequestOptions) {
+    async listMany(query?: DolibarrRequestOptions) {
         return await this._transporter.get(this._operator, "/", {
-            params: options
+            params: query
         });
     }
     
@@ -18,7 +18,7 @@ export class Tickets extends Operator implements ITickets {
         return await this._transporter.get(this._operator, `/${id}`);
     }
 
-    async create(payload: TicketPayload["create"]) {
+    async create(payload: Payload["create"]) {
         return await this._transporter.post(this._operator, "/", payload);
     }
 
@@ -30,7 +30,17 @@ export class Tickets extends Operator implements ITickets {
         return await this._transporter.delete(this._operator, `/${id}`);
     }
 
-    async newMessage(payload: TicketPayload["newMessage"]) {
+    // Additionals
+
+    async newMessage(payload: Payload["newMessage"]) {
         return await this._transporter.post(this._operator, "/newmessage", payload);
+    }
+
+    async ref(ref: string) {
+        return await this._transporter.get(this._operator, `/ref/${ref}`);
+    }
+
+    async trackId(track_id: string) {
+        return await this._transporter.get(this._operator, `/track_id/${track_id}`);
     }
 }
