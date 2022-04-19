@@ -12,6 +12,7 @@ import {
     Supplierinvoices,
     Supplierorders,
     Tasks,
+    Thirdparties,
     Tickets,
     Users,
 } from '../operators';
@@ -27,7 +28,7 @@ import { IProposals } from '../proposals';
 import { ISupplierinvoices } from '../supplierinvoices';
 import { ISupplierorders } from '../supplierorders';
 import { ITasks } from '../tasks';
-// import { IThirdparties } from '../thirdparties';
+import { IThirdparties } from '../thirdparties';
 import { ITickets } from '../tickets';
 import { IUsers } from '../users';
 
@@ -47,7 +48,7 @@ export class DolibarrItems {
     private _supplierinvoices: ISupplierinvoices;
     private _supplierorders: ISupplierorders;
     private _tasks: ITasks;
-    // private _thirdparties: IThirdparties;
+    private _thirdparties: IThirdparties;
     private _tickets: ITickets;
     private _users: IUsers;
 
@@ -67,7 +68,7 @@ export class DolibarrItems {
         this._supplierinvoices = new Supplierinvoices(this._transporter);
         this._supplierorders = new Supplierorders(this._transporter);
         this._tasks = new Tasks(this._transporter);
-        // this._thirdparties = new Groups(this._transporter);
+        this._thirdparties = new Thirdparties(this._transporter);
         this._tickets = new Tickets(this._transporter);
         this._users = new Users(this._transporter);
     }
@@ -120,9 +121,9 @@ export class DolibarrItems {
         return this._tasks;
     }
     
-    // get thirdparties(): IThirdparties {
-    //     return this._thirdparties;
-    // }
+    get thirdparties(): IThirdparties {
+        return this._thirdparties;
+    }
     
     get tickets(): ITickets {
         return this._tickets;
