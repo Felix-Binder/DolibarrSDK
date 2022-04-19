@@ -1,4 +1,5 @@
 export * from './agendaevents';
+export * from './bankaccounts';
 export * from './groups';
 export * from './login';
 export * from './projects';
