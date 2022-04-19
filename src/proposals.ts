@@ -17,7 +17,7 @@ export type Payload = {
 
 export type Query = {
     ref: {
-        contact_list: 0 | 1
+        contact_list?: 0 | 1
     }
 }
 
@@ -100,12 +100,12 @@ export interface IProposals extends IOperator<Payload["create"], Payload["update
      * @param ref_ext External reference of object
      * @param query Request query parameter
     **/
-    ref_ext(ref_ext: string, query: Query):Promise<any>;
+    ref_ext(ref_ext: string, query?: Query):Promise<any>;
 
     /**
      * Get properties of an proposal object by ref
      * @param ref Ref of object
      * @param query Request query parameter
     **/
-    ref(ref: string, query: Query):Promise<any>;
+    ref(ref: string, query?: Query):Promise<any>;
 }
