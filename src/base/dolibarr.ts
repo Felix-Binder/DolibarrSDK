@@ -1,5 +1,5 @@
-import type { DolibarrConfig } from './types';
-import { Transporter } from './transporter';
+import type { DolibarrConfig } from '../types';
+import { Transporter } from '../transporter';
 import { 
     Agendaevents,
     Bankaccounts,
@@ -16,25 +16,25 @@ import {
     Tasks,
     Tickets,
     Users,
-} from './operators';
-import { IAgendaevents } from './agendaevents';
-import { IBankaccounts } from './bankaccounts';
-import { IContacts } from './contacts';
-import { IContracts } from './contracts';
-import { IDocuments } from './documents';
-import { IGroups } from './groups';
-import { IInvoices } from './invoices';
-import { ILogin } from './login';
-import { IProjects } from './projects';
-import { IProposals } from './proposals';
-import { ISetup } from './setup';
-import { IStatus } from './status';
-import { ISupplierinvoices } from './supplierinvoices';
-import { ISupplierorders } from './supplierorders';
-import { ITasks } from './tasks';
-import { IThirdparties } from './thirdparties';
-import { ITickets } from './tickets';
-import { IUsers } from './users';
+} from '../operators';
+import { IAgendaevents } from '../agendaevents';
+import { IBankaccounts } from '../bankaccounts';
+import { IContacts } from '../contacts';
+import { IContracts } from '../contracts';
+import { IDocuments } from '../documents';
+import { IGroups } from '../groups';
+import { IInvoices } from '../invoices';
+import { ILogin } from '../login';
+import { IProjects } from '../projects';
+import { IProposals } from '../proposals';
+import { ISetup } from '../setup';
+import { IStatus } from '../status';
+import { ISupplierinvoices } from '../supplierinvoices';
+import { ISupplierorders } from '../supplierorders';
+import { ITasks } from '../tasks';
+import { IThirdparties } from '../thirdparties';
+import { ITickets } from '../tickets';
+import { IUsers } from '../users';
 
 export class Dolibarr {
     public config: DolibarrConfig;
@@ -63,7 +63,7 @@ export class Dolibarr {
     constructor(config:DolibarrConfig) {
         this.config = config;
 
-        if (this.config.transporter instanceof Transporter) {
+        if (this.config?.transporter && this.config.transporter instanceof Transporter) {
             this._transporter = this.config.transporter;
         } else {
             this._transporter = new Transporter({
@@ -95,6 +95,18 @@ export class Dolibarr {
 	get url() {
 		return `${this.config.server}${this.config.uri||"/api/index.php/"}`;
 	}
+
+	get server() {
+		return this.config.server;
+	}
+
+    get system() {
+        return undefined
+    }
+
+    get items() {
+        return undefined
+    }
 
     // Operators
 
