@@ -76,7 +76,7 @@ export interface IProposals extends IOperator<Payload["create"], Payload["update
     putLine(id: number, line: number, payload: Payload["putLine"]):Promise<any>;
     
     /**
-     * Set a commercial proposal billed. Could be also called setbilled 
+     * Set a commercial proposal billed
      * @param {number} id Commercial proposal ID
     **/
     setInvoiced(id: number):Promise<any>;
@@ -100,12 +100,12 @@ export interface IProposals extends IOperator<Payload["create"], Payload["update
      * @param ref_ext External reference of object
      * @param query Request query parameter
     **/
-    ref_ext(ref_ext: string, query?: Query):Promise<any>;
+    ref_ext(ref_ext: string, query?: Query["ref"]):Promise<any>;
 
     /**
      * Get properties of an proposal object by ref
      * @param ref Ref of object
      * @param query Request query parameter
     **/
-    ref(ref: string, query?: Query):Promise<any>;
+    ref(ref: string, query?: Query["ref"]):Promise<any>;
 }
