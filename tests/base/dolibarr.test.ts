@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { Dolibarr } from '../src';
+import { Dolibarr } from '../../src';
 import { expect } from 'chai';
 
 describe("Test Config", ():void => {
@@ -9,7 +9,6 @@ describe("Test Config", ():void => {
     });
     it("Config URL", (done):void => {
         const url = dolibarr.url;
-        console.log(url)
         expect(url).to.be.a("string");
         done()
     });
