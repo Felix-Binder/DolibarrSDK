@@ -1,8 +1,8 @@
 export type DolibarrConfig = {
     server: string,
-    uri?: string,
-    url: string,
     token: string | null,
+    uri?: string,
+    url?: string,
     transporter?: any,
     authentication?: {
         username: string,
