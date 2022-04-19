@@ -1,6 +1,6 @@
 import { Transporter } from '../transporter';
-import { DolibarrRequestOptions, TypeMap } from '../types';
-import { IContacts, ContactsPayload } from '../contacts';
+import { DolibarrRequestOptions } from '../types';
+import { IContacts, Payload, Query } from '../contacts';
 import { Operator } from '../operator';
 
 export class Contacts extends Operator implements IContacts {
@@ -18,11 +18,11 @@ export class Contacts extends Operator implements IContacts {
         return await this._transporter.get(this._operator, `/${id}`);
     }
 
-    async create(payload: ContactsPayload["create"]) {
+    async create(payload: Payload["create"]) {
         return await this._transporter.post(this._operator, "/", payload);
     }
 
-    async update(id: number, payload: ContactsPayload["update"]) {
+    async update(id: number, payload: Payload["update"]) {
         return await this._transporter.put(this._operator, `/${id}`, payload);
     }
 
@@ -30,27 +30,29 @@ export class Contacts extends Operator implements IContacts {
         return await this._transporter.delete(this._operator, `/${id}`);
     }
 
-    // Aditional
+    // Additional
 
-    async getCategories(contact: number, options: DolibarrRequestOptions) {
-        return await this._transporter.get(this._operator, `/contacts/${contact}/categories`, {
-            params: options
+    async getCategories(id: number, query?: DolibarrRequestOptions) {
+        return await this._transporter.get(this._operator, `/contacts/${id}/categories`, {
+            params: query
         });
     }
 
-    async delCategory(contact: number, category: number) {
-        return await this._transporter.delete(this._operator, `/contacts/${contact}/categories/${category}`);
+    async delCategory(id: number, category: number) {
+        return await this._transporter.delete(this._operator, `/contacts/${id}/categories/${category}`);
     }
 
-    async addCategory(contact: number, category: number) {
-        return await this._transporter.post(this._operator, `/contacts/${contact}/categories/${category}`);
+    async addCategory(id: number, category: number) {
+        return await this._transporter.post(this._operator, `/contacts/${id}/categories/${category}`);
     }
 
-    async createUser(contact: number, payload: ContactsPayload["createUser"]) {
-        return await this._transporter.post(this._operator, `/contacts/${contact}/createUser`, payload);
+    async createUser(id: number, payload: Payload["createUser"]) {
+        return await this._transporter.post(this._operator, `/contacts/${id}/createUser`, payload);
     }
 
-    async findEmail(email: string) {
-        return await this._transporter.get(this._operator, `/contacts/email/${email}`);
+    async findEmail(email: string, query?: Query["findEmail"]) {
+        return await this._transporter.get(this._operator, `/contacts/email/${email}`, {
+            params: query
+        });
     }
 }
