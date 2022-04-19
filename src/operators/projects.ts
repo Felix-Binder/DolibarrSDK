@@ -5,7 +5,7 @@ import { Operator } from '../operator';
 
 export class Projects extends Operator implements IProjects {
     constructor(transporter: Transporter) {
-        super(transporter, "tickets")
+        super(transporter, "projects")
     }
 
     async listMany(options?: DolibarrRequestOptions) {
