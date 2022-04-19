@@ -10,10 +10,13 @@ import {
     Invoices,
     Login,
     Projects,
+    Proposals,
+    Setup,
     Status,
     Supplierinvoices,
     Supplierorders,
     Tasks,
+    Thirdparties,
     Tickets,
     Users,
 } from '../operators';
@@ -81,13 +84,13 @@ export class Dolibarr {
         this._invoices = new Invoices(this._transporter);
         this._login = new Login(this._transporter);
         this._projects = new Projects(this._transporter);
-        this._proposals = new Groups(this._transporter);
-        this._setup = new Groups(this._transporter);
+        this._proposals = new Proposals(this._transporter);
+        this._setup = new Setup(this._transporter);
         this._status = new Status(this._transporter);
         this._supplierinvoices = new Supplierinvoices(this._transporter);
         this._supplierorders = new Supplierorders(this._transporter);
         this._tasks = new Tasks(this._transporter);
-        this._thirdparties = new Groups(this._transporter);
+        this._thirdparties = new Thirdparties(this._transporter);
         this._tickets = new Tickets(this._transporter);
         this._users = new Users(this._transporter);
     }
