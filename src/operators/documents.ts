@@ -1,5 +1,5 @@
 import { Transporter } from '../transporter';
-import { IDocuments, DocumentsPayload } from '../documents';
+import { IDocuments, Payload, Query } from '../documents';
 import { Operator } from '../operator';
 
 export class Documents extends Operator implements IDocuments {
@@ -7,29 +7,29 @@ export class Documents extends Operator implements IDocuments {
         super(transporter, "documents")
     }
 
-    async delete(query: DocumentsPayload["delete"]) {
+    async delete(query: Query["delete"]) {
         return await this._transporter.delete(this._operator, "/", {}, {
             params: query
         })
     }
 
-    async list(query: DocumentsPayload["list"]) {
+    async list(query: Query["list"]) {
         return await this._transporter.get(this._operator, "/", {
             params: query
         })
     }
 
-    async builddoc(payload: DocumentsPayload["builddoc"]) {
+    async builddoc(payload: Payload["builddoc"]) {
         return await this._transporter.put(this._operator, "/builddoc", payload)
     }
 
-    async download(query: DocumentsPayload["download"]) {
+    async download(query: Query["download"]) {
         return await this._transporter.get(this._operator, "/download", {
             params: query
         }) 
     }
 
-    async upload(payload: DocumentsPayload["upload"]) {
+    async upload(payload: Payload["upload"]) {
         return await this._transporter.post(this._operator, "/upload", payload)
     }
 }

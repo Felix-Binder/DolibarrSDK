@@ -1,24 +1,9 @@
-export type DocumentsPayload = {
-    list: {
-        id?: number,
-        ref?: string,
-        modulepart: string,
-        sortfield?: "fullname" | "relativename" | "name" | "date" | "size",
-        sortorder?: "asc" | "desc",
-    },
-    delete: {
-        modulepart: string,
-        original_file: string
-    },
+export type Payload = {
     builddoc: {
         modulepart: string,
         original_file?: string,
         doctemplat?: string,
         langcode?: string,
-    },
-    download: {
-        modulepart: string,
-        original_file?: string
     },
     upload: {
         filename: string,
@@ -32,10 +17,52 @@ export type DocumentsPayload = {
     },
 }
 
+export type Query = {
+    delete: {
+        modulepart: string,
+        original_file: string
+    },
+    list: {
+        id?: number,
+        ref?: string,
+        modulepart: string,
+        sortfield?: "fullname" | "relativename" | "name" | "date" | "size",
+        sortorder?: "asc" | "desc",
+    },
+    download: {
+        modulepart: string,
+        original_file?: string
+    },
+}
+
 export interface IDocuments {
-    list(query: DocumentsPayload["list"]):Promise<any>;
-    delete(payload: DocumentsPayload["delete"]):Promise<any>;
-    builddoc(payload: DocumentsPayload["builddoc"]):Promise<any>;
-    download(payload: DocumentsPayload["download"]):Promise<any>;
-    upload(payload: DocumentsPayload["upload"]):Promise<any>;
+    /**
+     * Delete a document
+     * @param query Request query parameter
+    **/
+    delete(query: Query["delete"]):Promise<any>;
+    
+    /**
+     * Return the list of documents of a dedicated element (from its ID or Ref)
+     * @param query Request query parameter
+    **/
+    list(query: Query["list"]):Promise<any>;
+
+    /**
+     * Build a document
+     * @param payload Request body payload
+    **/
+    builddoc(payload: Payload["builddoc"]):Promise<any>;
+
+    /**
+     * Download a document
+     * @param query Request query parameter
+    **/
+    download(query: Query["download"]):Promise<any>;
+
+    /**
+     * Upload a file
+     * @param payload Request body payload
+    **/
+    upload(payload: Payload["upload"]):Promise<any>;
 }
