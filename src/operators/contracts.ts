@@ -1,6 +1,6 @@
 import { Transporter } from '../transporter';
 import { DolibarrRequestOptions } from '../types';
-import { IContracts, ContractsPayload } from '../contracts';
+import { IContracts, Payload } from '../contracts';
 import { Operator } from '../operator';
 
 export class Contracts extends Operator implements IContracts {
@@ -18,11 +18,11 @@ export class Contracts extends Operator implements IContracts {
         return await this._transporter.get(this._operator, `/${id}`);
     }
 
-    async create(payload: ContractsPayload["create"]) {
+    async create(payload: Payload["create"]) {
         return await this._transporter.post(this._operator, "/", payload);
     }
 
-    async update(id:number, payload: ContractsPayload["update"]) {
+    async update(id:number, payload: Payload["update"]) {
         return await this._transporter.put(this._operator, `/${id}`, payload);
     }
 
@@ -30,37 +30,37 @@ export class Contracts extends Operator implements IContracts {
         return await this._transporter.delete(this._operator, `/${id}`);
     }
     
-    // Aditional
+    // Additional
 
-    async close(contract: number, payload: ContractsPayload["close"]) {
-        return await this._transporter.post(this._operator, `/contracts/${contract}/close`, payload);
+    async close(id: number, payload: Payload["close"]) {
+        return await this._transporter.post(this._operator, `/contracts/${id}/close`, payload);
     }
 
-    async getLines(contract: number) {
-        return await this._transporter.get(this._operator, `/contracts/${contract}/lines`);
+    async getLines(id: number) {
+        return await this._transporter.get(this._operator, `/contracts/${id}/lines`);
     }
 
-    async addLine(contract: number, payload: ContractsPayload["addLine"]) {
-        return await this._transporter.post(this._operator, `/contracts/${contract}/lines`, payload);
+    async addLine(id: number, payload: Payload["addLine"]) {
+        return await this._transporter.post(this._operator, `/contracts/${id}/lines`, payload);
     }
 
-    async delLine(contract: number, line: number) {
-        return await this._transporter.delete(this._operator, `/contracts/${contract}/lines/${line}`);
+    async delLine(id: number, line: number) {
+        return await this._transporter.delete(this._operator, `/contracts/${id}/lines/${line}`);
     }
 
-    async putLine(contract: number, line: number, payload: ContractsPayload["putLine"]) {
-        return await this._transporter.put(this._operator, `/contracts/${contract}/lines/${line}`, payload);
+    async putLine(id: number, line: number, payload: Payload["putLine"]) {
+        return await this._transporter.put(this._operator, `/contracts/${id}/lines/${line}`, payload);
     }
 
-    async activateLine(contract: number, line: number, payload: ContractsPayload["activateLine"]) {
-        return await this._transporter.put(this._operator, `/contracts/${contract}/lines/${line}/activate`, payload);
+    async activateLine(id: number, line: number, payload: Payload["activateLine"]) {
+        return await this._transporter.put(this._operator, `/contracts/${id}/lines/${line}/activate`, payload);
     }
 
-    async unactivateLine(contract: number, line: number, payload: ContractsPayload["unactivateLine"]) {
-        return await this._transporter.put(this._operator, `/contracts/${contract}/lines/${line}/unactivate`, payload);
+    async unactivateLine(id: number, line: number, payload: Payload["unactivateLine"]) {
+        return await this._transporter.put(this._operator, `/contracts/${id}/lines/${line}/unactivate`, payload);
     }
 
-    async validate(contract: number, payload: ContractsPayload["validate"]) {
-        return await this._transporter.post(this._operator, `/contracts/${contract}/validate`, payload);
+    async validate(id: number, payload: Payload["validate"]) {
+        return await this._transporter.post(this._operator, `/contracts/${id}/validate`, payload);
     }
 }
