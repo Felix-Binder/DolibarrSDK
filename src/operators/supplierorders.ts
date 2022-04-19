@@ -1,6 +1,6 @@
 import { Transporter } from '../transporter';
 import { DolibarrRequestOptions } from '../types';
-import { ISupplierorders, SupplierordersPayload } from '../supplierorders';
+import { ISupplierorders, Payload } from '../supplierorders';
 import { Operator } from '../operator';
 
 export class Supplierorders extends Operator implements ISupplierorders {
@@ -18,11 +18,11 @@ export class Supplierorders extends Operator implements ISupplierorders {
         return await this._transporter.get(this._operator, `/${id}`);
     }
 
-    async create(payload: SupplierordersPayload["create"]) {
+    async create(payload: Payload["create"]) {
         return await this._transporter.post(this._operator, "/", payload);
     }
 
-    async update(id: number, payload: SupplierordersPayload["update"]) {
+    async update(id: number, payload: Payload["update"]) {
         return await this._transporter.put(this._operator, `/${id}`, payload);
     }
 
@@ -30,7 +30,7 @@ export class Supplierorders extends Operator implements ISupplierorders {
         return await this._transporter.delete(this._operator, `/${id}`);
     }
 
-    async validate(id: number, payload: SupplierordersPayload["validate"]) {
+    async validate(id: number, payload: Payload["validate"]) {
         return await this._transporter.post(this._operator, `/${id}/validate`, payload);
     }
 }
