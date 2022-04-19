@@ -12,6 +12,7 @@ export class Dolibarr {
     constructor(config:DolibarrConfig) {
         this.config = config;
 
+        if (!this.config.server) throw Error("Server is not defined!")
         this.config.url = `${this.config.server}${this.config.uri||"/api/index.php/"}`;
 
         if (this.config?.transporter && this.config.transporter instanceof Transporter) {
