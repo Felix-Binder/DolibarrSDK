@@ -9,7 +9,7 @@ export type DolibarrConfig = {
     }
 };
 
-export type DolibarrOperator = "agendaevents" | "bankaccounts" | "contacts" | "contracts" | "documents" | "invoices" | "login" | "projects" | "proposals" | "setup" | "status" | "supplierinvoice" | "supplierorder" | "tasks" | "thirdparties" | "tickets" | "users";
+export type DolibarrOperator = "agendaevents" | "bankaccounts" | "contacts" | "contracts" | "documents" | "invoices" | "login" | "projects" | "proposals" | "setup" | "status" | "supplierinvoices" | "supplierorders" | "tasks" | "thirdparties" | "tickets" | "users";
 
 export type DolibarrRequestOptions = {
     socid?: string,
@@ -26,4 +26,8 @@ export interface IOperator<C, U> {
     create(payload: C):Promise<any>;
     update(id: number, payload: U):Promise<any>;
     delete(id: number):Promise<any>;
+}
+
+export type TypeMap = {
+    [key:string]: string|number;
 }
