@@ -18,6 +18,6 @@ export interface IContracts extends IOperator<ContractsPayload["create"], Contra
     delLine(contract: number, line: number):Promise<any>;
     putLine(contract: number, line: number, payload: ContractsPayload["putLine"]):Promise<any>;
     activateLine(contract: number, line: number, payload: ContractsPayload["activateLine"]):Promise<any>;
-    unactivateLine(contact: number, line: number, payload: ContractsPayload["unactivateLine"]):Promise<any>;
-    validate(contact: number, payload: ContractsPayload["validate"]):Promise<any>;
+    unactivateLine(contract: number, line: number, payload: ContractsPayload["unactivateLine"]):Promise<any>;
+    validate(contract: number, payload: ContractsPayload["validate"]):Promise<any>;
 }
