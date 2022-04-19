@@ -21,10 +21,35 @@ export type DolibarrRequestOptions = {
 }
 
 export interface IOperator<C, U> {
-    listMany(options?: DolibarrRequestOptions):Promise<any>;
+    /**
+     * Get a List of objects
+     * @param query Request query parameter
+    **/
+    listMany(query?: DolibarrRequestOptions):Promise<any>;
+    
+    /**
+     * Get properties of an object
+     * @param id Id of object to list
+    **/
     listOne(id: number):Promise<any>;
+
+    /**
+     * Create an object
+     * @param payload Request body payload
+    **/
     create(payload: C):Promise<any>;
+
+    /**
+     * Update an object
+     * @param id Id of object to update
+     * @param payload Request body payload
+    **/
     update(id: number, payload: U):Promise<any>;
+
+    /**
+     * Delete an object
+     * @param id Id of object to delete
+    **/
     delete(id: number):Promise<any>;
 }
 
