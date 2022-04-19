@@ -1,6 +1,6 @@
 import { Transporter } from '../transporter';
 import { DolibarrRequestOptions } from '../types';
-import { IProjects, ProjectsPayload } from '../projects';
+import { IProjects, Payload, Query } from '../projects';
 import { Operator } from '../operator';
 
 export class Projects extends Operator implements IProjects {
@@ -8,65 +8,43 @@ export class Projects extends Operator implements IProjects {
         super(transporter, "projects")
     }
 
-    /**
-     * List projects
-    **/
-    async listMany(options?: DolibarrRequestOptions) {
+    async listMany(query?: DolibarrRequestOptions) {
         return await this._transporter.get(this._operator, "/", {
-            params: options
+            params: query
         });
     }
     
-    /**
-     * Get properties of a project object
-    **/
     async listOne(id:number) {
         return await this._transporter.get(this._operator, `/${id}`);
     }
 
-    /**
-     * Create a project object
-    **/
-    async create(payload: ProjectsPayload["create"]) {
+    async create(payload: Payload["create"]) {
         return await this._transporter.post(this._operator, "/", payload);
     }
 
-    /**
-     * Update a project general fields (won't tocuh lines of project)
-    **/
-    async update(id:number, payload: ProjectsPayload["update"]) {
+    async update(id:number, payload: Payload["update"]) {
         return await this._transporter.put(this._operator, `/${id}`, payload);
     }
 
-    /**
-     * Delete a project
-    **/
     async delete(id:number) {
         return await this._transporter.delete(this._operator, `/${id}`);
     }
 
-    /**
-     * Get roles a user is assigned to a project with
-    **/
-    async roles(id: number, query: ProjectsPayload["roles"]) {
+    // Additional
+
+    async roles(id: number, query?: Query["roles"]) {
         return await this._transporter.get(this._operator, `/${id}/roles`, {
             params: query
         });
     }
 
-    /**
-     * Get tasks of a project
-    **/
-    async tasks(id: number, query: ProjectsPayload["tasks"]) {
+    async tasks(id: number, query?: Query["tasks"]) {
         return await this._transporter.get(this._operator, `/${id}/tasks`, {
             params: query
         });
     }
 
-    /**
-     * Validate a project
-    **/
-    async validate(id: number, payload: ProjectsPayload["validate"]) {
+    async validate(id: number, payload: Payload["validate"]) {
         return await this._transporter.post(this._operator, `/${id}/validate`, payload);
     }
 }
