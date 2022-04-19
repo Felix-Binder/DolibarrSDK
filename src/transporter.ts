@@ -48,7 +48,9 @@ export class Transporter {
 
             const content = {
                 status: response.status,
-                data: response.data
+				statusText: response.statusText,
+                data: response.data as any,
+                headers: response.headers,
             };
 
             return content;
