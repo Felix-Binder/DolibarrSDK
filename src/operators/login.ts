@@ -7,12 +7,18 @@ export class Login extends Operator implements ILogin {
         super(transporter, "login")
     }
 
+    /**
+     * Login with GET Method (not recommanded)
+    **/
     async get(payload: LoginPayload) {
         return await this._transporter.get(this._operator, "/", {
             params: payload
         });
     }
 
+    /**
+     * Login with POST Method (recommanded)
+    **/
     async post(payload: LoginPayload) {
         return await this._transporter.post(this._operator, "/", payload);
     }
